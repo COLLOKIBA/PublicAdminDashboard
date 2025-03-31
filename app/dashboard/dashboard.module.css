@@ -1,0 +1,79 @@
+.dashboardContainer {
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Filters Section */
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.filterContainer label {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.filterContainer select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+}
+
+/* Summary Cards */
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 16px;
+  color: #28a745;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Charts Section */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chartContainer {
+  flex: 1;
+  min-width: 300px;
+}
+
+.chartContainer h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}

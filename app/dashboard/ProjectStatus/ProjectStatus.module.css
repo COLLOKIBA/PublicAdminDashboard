@@ -1,0 +1,127 @@
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .searchBar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .searchIcon {
+    margin-right: 5px;
+    color: #666;
+  }
+  
+  .searchBar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .select {
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .excelBtn {
+    background-color: #107c41;
+    color: white;
+  }
+  
+  .pdfBtn {
+    background-color: #d32f2f;
+    color: white;
+  }
+  
+  .projectsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .projectsTable th, .projectsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .projectsTable th {
+    background-color: #f4f4f4;
+  }
+  
+  .projectsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  /* Pagination Container */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+  }
+  
+  /* Pagination Buttons */
+  .pageButton {
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  .pageButton:hover {
+    background-color: #218838; /* Darker Green */
+  }
+  
+  /* Disabled Button */
+  .pageButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Page Number Text */
+  .pagination span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  

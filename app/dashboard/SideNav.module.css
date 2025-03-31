@@ -1,0 +1,101 @@
+/* Container for Sidebar + Main Content */
+.container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px; /* Default sidebar width */
+  background-color: #1a202c; /* Dark gray background */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Sidebar stays in place */
+  height: 100vh;
+  left: 0;
+  top: 0;
+  overflow-y: auto; /* Enable scrolling if needed */
+  transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+/* Adjust sidebar width for smaller screens */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px; /* Smaller width for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 180px; /* Further reduced width for mobile devices */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 150px; /* Even smaller width for very small screens */
+  }
+}
+
+/* Sidebar Links */
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin-bottom: 10px;
+}
+
+.navLink {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navLink:hover {
+  background-color: #2d3748; /* Darker gray on hover */
+}
+
+/* Active Link */
+.activeLink {
+  background-color: #28a745; /* Green background for active page */
+  font-weight: bold;
+  color: white;
+}
+
+/* Main Content */
+.content {
+  flex-grow: 1; /* Fills remaining space */
+  padding: 20px;
+  margin-left: 250px; /* Default offset for sidebar width */
+  background-color: #f8f9fa; /* Light gray */
+  overflow-y: auto; /* Scroll content if needed */
+  transition: margin-left 0.3s ease; /* Smooth transition for content margin */
+}
+
+/* Adjust content margin based on sidebar width for smaller screens */
+@media (max-width: 1024px) {
+  .content {
+    margin-left: 200px; /* Adjust offset for smaller sidebar width */
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 180px; /* Adjust offset for smaller sidebar width */
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    margin-left: 150px; /* Adjust offset for smallest sidebar width */
+  }
+}

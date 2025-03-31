@@ -1,95 +1,40 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import styles from './home.module.css';
+
+const Home = () => {
+  const router = useRouter();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={styles.homeContainer}>
+      <h1 className={styles.title}>Welcome to Bungoma County Projects Portal</h1>
+      
+      <p className={styles.description}>
+        Discover ongoing and completed projects spanning various sectors within Bungoma County.  
+        Our mission is rooted in transparency and continuous development, ensuring that every initiative
+        delivers value to the community and drives progress.
+      </p>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <p className={styles.description}>
+        Stay informed on key areas such as: <strong>Trade, Energy & Industrialization</strong>, 
+        <strong>Public Service Management, ICT</strong>, <strong>Health & Sanitation</strong>, 
+        <strong>Roads, Transport, Infrastructure & Public Works</strong>, 
+        <strong>Education & Vocational Training</strong>, <strong>Lands, Housing & Physical Planning</strong>, 
+        <strong>Water, Natural Resources, Environment, Tourism & Climate Change</strong>, 
+        <strong>Finance & Economic Planning</strong>, <strong>Gender, Youth, Culture & Sports</strong>, 
+        and <strong>Agriculture, Livestock, Irrigation, Fisheries & Co-operative Development</strong>. 
+        Use our filtering tools to dive deeper into each sector's progress and investments across your subcounty and ward.
+      </p>
+
+      <div className={styles.buttonContainer}>
+        <button className={styles.dashboardButton} onClick={() => router.push('/dashboard')}>
+          Go to Dashboard
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+export default Home;

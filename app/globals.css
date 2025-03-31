@@ -40,3 +40,24 @@ a {
     color-scheme: dark;
   }
 }
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}

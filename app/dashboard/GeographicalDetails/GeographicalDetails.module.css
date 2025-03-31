@@ -1,0 +1,185 @@
+/* GeographicalDetails.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #28a745;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filterInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.filterInput:focus {
+  border-color: #28a745;
+}
+
+.exportButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.exportButton {
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.exportButton:hover {
+  background: #218838;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background: #28a745;
+  color: white;
+  font-weight: 600;
+}
+
+.table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background: #e9f5e9;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pageButton {
+  background: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.pageButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.noData {
+  text-align: center;
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Pagination Buttons */
+.pageButton {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease-in-out;
+}
+
+.pageButton:hover {
+  background: #218838;
+}
+
+/* Disabled Buttons */
+.pageButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Active Page Indicator */
+.pageInfo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+}
+
+/* Responsive Pagination */
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pageButton {
+    width: 100%;
+    text-align: center;
+  }
+}
