@@ -25,7 +25,7 @@ const Home = () => {
         <strong>Water, Natural Resources, Environment, Tourism & Climate Change</strong>, 
         <strong>Finance & Economic Planning</strong>, <strong>Gender, Youth, Culture & Sports</strong>, 
         and <strong>Agriculture, Livestock, Irrigation, Fisheries & Co-operative Development</strong>. 
-        Use our filtering tools to dive deeper into each sector's progress and investments across your subcounty and ward.
+        Use our filtering tools to dive deeper into each sector&apos;s progress and investments across your subcounty and ward.
       </p>
 
       <div className={styles.buttonContainer}>
