@@ -1,6 +1,6 @@
 /* Container & Controls */
 .container {
-  padding: 40px;
+  padding: 20px;
   background-color: #f0f2f5;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -35,7 +35,6 @@
   font-size: 0.95rem;
 }
 
-/* Use a local class for select elements */
 .selectInput {
   padding: 10px;
   border: 1px solid #ccc;
@@ -51,7 +50,8 @@
 /* Button Styles */
 .excelBtn,
 .pdfBtn,
-.viewBtn {
+.viewBtn,
+.printBtn {
   background-color: #4a90e2;
   color: #fff;
   padding: 10px 15px;
@@ -65,13 +65,24 @@
   font-size: 0.95rem;
 }
 
+.printBtn {
+  background-color: #28a745;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto;
+}
+
 .excelBtn:hover,
 .pdfBtn:hover,
 .viewBtn:hover {
   background-color: #357ab8;
 }
 
-/* Projects Table */
+.printBtn:hover {
+  background-color: #218838;
+}
+
+/* Table Styles */
 .projectsTable {
   width: 100%;
   border-collapse: collapse;
@@ -84,6 +95,7 @@
   border: 1px solid #ddd;
   text-align: center;
   font-size: 0.95rem;
+  color: #333;
 }
 
 .projectsTable th {
@@ -130,101 +142,27 @@
   color: #333;
 }
 
-/* Modal Styles */
+/* Modal Overlay */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
-}
-
-.modal {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #4a90e2;
-  text-align: center;
-}
-
-.modalContent {
-  margin-bottom: 20px;
-}
-
-.modalContent h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.modalContent p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.closeBtn {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.closeBtn:hover {
-  background-color: #c0392b;
-}
-/* Modal Overlay with smooth fade-in */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
   align-items: center;
-  justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.5s ease-out;
 }
 
+/* Modal Animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Modal Container with gradient background and slide-in animation */
-.modal {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-  max-width: 600px;
-  width: 95%;
-  position: relative;
-  animation: slideIn 0.4s ease-out;
-  border-left: 8px solid #28a745;
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideIn {
@@ -238,7 +176,23 @@
   }
 }
 
-/* Modal Heading with green accent */
+/* Modal Container */
+.modal {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  max-width: 600px;
+  width: 95%;
+  position: relative;
+  animation: slideIn 0.4s ease-out;
+  border-left: 8px solid #28a745;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Header */
 .modal h2 {
   margin-top: 0;
   margin-bottom: 1.5rem;
@@ -248,12 +202,14 @@
   font-weight: bold;
 }
 
-/* Modal Content Container */
+/* Modal Content */
 .modalContent {
-  margin-bottom: 1.5rem;
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 20px;
+  margin-bottom: 20px;
 }
 
-/* Section Headings for Details */
 .modalContent h3 {
   margin: 0;
   margin-bottom: 10px;
@@ -263,7 +219,12 @@
   padding-bottom: 5px;
 }
 
-/* Financial & Implementation Details - Using a grid layout */
+.modalContent p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Details Section */
 .detailsContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -271,7 +232,6 @@
   margin-top: 10px;
 }
 
-/* Detail Card */
 .detailItem {
   background: #f9f9f9;
   padding: 10px 15px;
@@ -280,28 +240,27 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Detail Label */
 .detailItem strong {
   display: block;
   font-size: 0.9rem;
   color: #333;
   margin-bottom: 3px;
+  width: 150px;
 }
 
-/* Detail Value */
 .detailItem span {
   font-size: 1rem;
   color: #555;
 }
 
-/* Stylish Close Button */
+/* Close Button */
 .closeBtn {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #28a745;
+  background: wheat;
   border: none;
-  color: #fff;
+  color: red;
   font-size: 1.2rem;
   padding: 0.5rem;
   border-radius: 50%;
@@ -313,20 +272,197 @@
   background: #218838;
   transform: scale(1.1);
 }
-/* Print Button Styles */
+
+/* Mobile styles for screens 450px and below */
+@media (max-width: 450px) {
+  .detailsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .detailItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .detailItem strong {
+    width: 200px; /* or any suitable width */
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .detailItem span {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .searchBar {
+    max-width: 100%;
+  }
+
+  .selectInput {
+    width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .excelBtn,
+  .pdfBtn,
+  .viewBtn,
+  .printBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .projectsTable th,
+  .projectsTable td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .modal {
+    width: 95%;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .modalContent {
+    max-height: 50vh;
+    padding-right: 10px;
+  }
+
+  .detailsContainer {
+    grid-template-columns: 1fr; /* Stack details in one column */
+  }
+
+  .closeBtn {
+    font-size: 1rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  .printBtn {
+    font-size: 0.9rem;
+  }
+  .excelBtn,
+.pdfBtn,
+.viewBtn,
 .printBtn {
-  background-color: #28a745;
+  background-color: #4a90e2;
   color: #fff;
-  padding: 10px 15px;
+  padding: 8px 12px; /* Slightly reduced padding */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 1rem;
-  display: block;
-  margin: 0 auto;
+  font-size: 0.9rem;
+  display: inline-flex; /* Make width depend on content */
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  max-width: fit-content;
 }
 
-.printBtn:hover {
-  background-color: #218838;
+
+}
+
+@media (max-width: 450px) {
+  .projectsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .projectsTable thead {
+    display: none; /* Hide the table headers on small screens */
+  }
+
+  .projectsTable tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 0px;
+  }
+
+  .projectsTable tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .projectsTable tbody tr:hover {
+    background-color: #e0f7fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .projectsTable td {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    width: 100%;
+  }
+
+  /* Styling for the label part (e.g., 'Project Name') */
+  .projectsTable td .label {
+    font-weight: bold;
+    text-align: left;
+    color: #00796b;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  /* Styling for the value part (e.g., the actual 'Project Name' data) */
+  .projectsTable td .value {
+    text-align: right;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .projectsTable td:last-child {
+    text-align: center; /* Center the action buttons */
+  }
+
+  .projectsTable td button {
+    width: 100%; /* Ensure buttons take full width in small screens */
+    padding: 10px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .projectsTable td button:hover {
+    background-color: #004d40;
+  }
 }

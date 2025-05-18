@@ -1,133 +1,188 @@
-'use client';
+ 'use client';
 
-import { useState, useMemo } from 'react';
-import { FaSearch, FaFileExcel, FaFilePdf } from 'react-icons/fa';
+
+import React, { useState, useMemo } from 'react';
 import styles from './ProjectStatus.module.css';
-import * as XLSX from 'xlsx';
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
 
-// Sample Project Data
-const projects = [
-  { id: 1, title: 'Road Construction', projectOutput: '10km road', status: 'Ongoing', department: 'Infrastructure', section: 'Roads' },
-  { id: 2, title: 'Hospital Expansion', projectOutput: 'New hospital wing', status: 'Completed', department: 'Health', section: 'Hospitals' },
-  { id: 3, title: 'Water Supply Project', projectOutput: 'Clean water to 5k homes', status: 'New/Yet to Start', department: 'Water', section: 'Distribution' },
-  { id: 4, title: 'School Renovation', projectOutput: '5 schools renovated', status: 'Stalled', department: 'Education', section: 'Facilities' },
-  { id: 5, title: 'Library Construction', projectOutput: 'Public library built', status: 'Completed and Not in Use', department: 'Culture', section: 'Libraries' },
-];
-
-// Get unique departments and sections dynamically
-const departments = [...new Set(projects.map(p => p.department))];
-
-const getSectionsByDepartment = (department) => {
-  return [...new Set(projects.filter(p => p.department === department).map(p => p.section))];
-};
-
-// Export to Excel
-const exportToExcel = (filteredProjects) => {
-  if (!filteredProjects.length) return alert('No data to export!');
-  const ws = XLSX.utils.json_to_sheet(filteredProjects);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Projects');
-  XLSX.writeFile(wb, 'projects.xlsx');
-};
-
-// Export to PDF
-const exportToPDF = (filteredProjects) => {
-  if (!filteredProjects.length) return alert('No data to export!');
-  const doc = new jsPDF();
-  autoTable(doc, {
-    head: [['Serial No.', 'Project Name', 'Project Output', 'Status', 'Department', 'Section']],
-    body: filteredProjects.map(p => [p.id, p.title, p.projectOutput, p.status, p.department, p.section]),
-  });
-  doc.save('projects.pdf');
-};
-
-const ProjectStatus = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [departmentFilter, setDepartmentFilter] = useState('');
-  const [sectionFilter, setSectionFilter] = useState('');
+function ProjectStatus() {
+  const [selectedProject, setSelectedProject] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 3; // Number of projects per page
+  const projectsPerPage = 10;
 
-  // Filtered Projects
-  const filteredProjects = useMemo(() => {
-    return projects.filter(p =>
-      (p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.projectOutput.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.id.toString().includes(searchQuery)) &&
-      (statusFilter === '' || p.status === statusFilter) &&
-      (departmentFilter === '' || p.department === departmentFilter) &&
-      (sectionFilter === '' || p.section === sectionFilter)
-    );
-  }, [searchQuery, statusFilter, departmentFilter, sectionFilter]);
+  const [filters, setFilters] = useState({
+    name: '',
+    status: '',
+    department: '',
+    year: '',
+  });
 
-  // Reset section filter when department changes
-  const handleDepartmentChange = (e) => {
-    setDepartmentFilter(e.target.value);
-    setSectionFilter(''); // Reset section when department changes
+  const projects = [
+    {
+      name: 'Bridge Construction',
+      output: 'Bridge completed',
+      status: 'Ongoing',
+      department: 'Roads and Public Works',
+      section: 'Roads',
+      year: '2024/2025',
+      progress: 30,
+    },
+    {
+      name: 'ICT Equipment Delivery',
+      output: '100 laptops delivered',
+      status: 'Completed',
+      department: 'Public Administration and ICT',
+      section: 'Public Administration',
+      year: '2024/2025',
+      progress: 100,
+    },
+    {
+      name: 'Health Center Renovation',
+      output: 'Facility refurbished',
+      status: 'Ongoing',
+      department: 'Health and Sanitation',
+      section: 'Sanitation',
+      year: '2024/2025',
+      progress: 60,
+    },
+    {
+      name: 'Water Project',
+      output: '5 boreholes drilled',
+      status: 'Ongoing',
+      department: 'Water',
+      section: 'Water',
+      year: '2024/2025',
+      progress: 20,
+    },
+    {
+      name: 'School Supplies',
+      output: 'Textbooks distributed',
+      status: 'Completed',
+      department: 'Education',
+      section: 'Education',
+      year: '2024/2025',
+      progress: 75,
+    },
+  ];
+
+  const uniqueDepartments = useMemo(() => {
+    const depts = projects.map((p) => p.department);
+    return Array.from(new Set(depts));
+  }, [projects]);
+
+  const uniqueYears = useMemo(() => {
+    const yrs = projects.map((p) => p.year);
+    return Array.from(new Set(yrs));
+  }, [projects]);
+
+  const openProgressModal = (project) => setSelectedProject(project);
+
+  const closeModal = () => setSelectedProject(null);
+
+  const getProgressColor = (progress) => {
+    if (progress <= 25) return styles.red;
+    if (progress <= 50) return styles.gold;
+    if (progress <= 75) return styles.orange;
+    return styles.green;
   };
 
-  // Pagination Logic
+  const printModal = () => {
+    const printContents = document.getElementById('printable').innerHTML;
+    const newWindow = window.open('', '', 'width=800,height=600');
+    newWindow.document.write(
+      `<html><head><title>Print Project Progress</title><style>
+      body { font-family: Arial; padding: 20px; }
+      h3 { color: #28a745; }
+      .bar { height: 25px; color: white; text-align: center; line-height: 25px; border-radius: 8px; font-weight: bold; }
+      .red { background: red; }
+      .gold { background: goldenrod; }
+      .orange { background: orange; }
+      .green { background: #28a745; }
+      </style></head><body>${printContents}</body></html>`
+    );
+    newWindow.document.close();
+    newWindow.print();
+  };
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const matchesName = project.name.toLowerCase().includes(filters.name.toLowerCase());
+      const matchesStatus = filters.status ? project.status.toLowerCase() === filters.status.toLowerCase() : true;
+      const matchesDepartment = filters.department ? project.department === filters.department : true;
+      const matchesYear = filters.year ? project.year === filters.year : true;
+      return matchesName && matchesStatus && matchesDepartment && matchesYear;
+    });
+  }, [filters, projects]);
+
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
-  const paginatedProjects = filteredProjects.slice(
-    (currentPage - 1) * projectsPerPage,
-    currentPage * projectsPerPage
-  );
+  const indexOfLast = currentPage * projectsPerPage;
+  const indexOfFirst = indexOfLast - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+    setCurrentPage(1);
+  };
+
+  const handlePrevious = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+
+  const handleNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
   return (
-    <div className={styles.container}>
-      {/* Top Controls */}
-      <div className={styles.controls}>
-        {/* Search Bar */}
-        <div className={styles.searchBar}>
-          <FaSearch className={styles.searchIcon} />
-          <input
-            type="text"
-            placeholder="Search by Project Name, Output, or Serial No."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>Project Progress Tracker</h2>
 
-        {/* Filters */}
-        <select className={styles.select} value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+      <div className={styles.filters}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Search by Project Name"
+          value={filters.name}
+          onChange={handleFilterChange}
+          className={styles.filterInput}
+        />
+
+        <select
+          name="status"
+          value={filters.status}
+          onChange={handleFilterChange}
+          className={styles.filterInput}
+        >
           <option value="">All Statuses</option>
-          <option value="Completed">Completed</option>
           <option value="Ongoing">Ongoing</option>
-          <option value="Stalled">Stalled</option>
-          <option value="Completed and Not in Use">Completed and Not in Use</option>
-          <option value="New/Yet to Start">New/Yet to Start</option>
+          <option value="Completed">Completed</option>
         </select>
 
-        <select className={styles.select} value={departmentFilter} onChange={handleDepartmentChange}>
+        <select
+          name="department"
+          value={filters.department}
+          onChange={handleFilterChange}
+          className={styles.filterInput}
+        >
           <option value="">All Departments</option>
-          {departments.map(dept => (
-            <option key={dept} value={dept}>{dept}</option>
+          {uniqueDepartments.map((dept) => (
+            <option key={dept} value={dept}>
+              {dept}
+            </option>
           ))}
         </select>
 
-        <select className={styles.select} value={sectionFilter} onChange={(e) => setSectionFilter(e.target.value)} disabled={!departmentFilter}>
-          <option value="">All Sections</option>
-          {departmentFilter && getSectionsByDepartment(departmentFilter).map(sec => (
-            <option key={sec} value={sec}>{sec}</option>
+        <select
+          name="year"
+          value={filters.year}
+          onChange={handleFilterChange}
+          className={styles.filterInput}
+        >
+          <option value="">All Years</option>
+          {uniqueYears.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
           ))}
         </select>
-
-        {/* Export Buttons */}
-        <div className={styles.buttons}>
-          <button onClick={() => exportToExcel(filteredProjects)} className={`${styles.button} ${styles.excelBtn}`}>
-            <FaFileExcel /> Export to Excel
-          </button>
-          <button onClick={() => exportToPDF(filteredProjects)} className={`${styles.button} ${styles.pdfBtn}`}>
-            <FaFilePdf /> Export to PDF
-          </button>
-        </div>
       </div>
 
-      {/* Project Table */}
-      <table className={styles.projectsTable}>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Serial No.</th>
@@ -136,42 +191,85 @@ const ProjectStatus = () => {
             <th>Status</th>
             <th>Department</th>
             <th>Section</th>
+            <th>Financial Year</th>
+            <th>Progress</th>
           </tr>
         </thead>
         <tbody>
-          {paginatedProjects.map(p => (
-            <tr key={p.id}>
-              <td>{p.id}</td>
-              <td>{p.title}</td>
-              <td>{p.projectOutput}</td>
-              <td>{p.status}</td>
-              <td>{p.department}</td>
-              <td>{p.section}</td>
+          {currentProjects.length === 0 ? (
+            <tr>
+              <td colSpan="8" style={{ textAlign: 'center' }}>
+                No projects found.
+              </td>
             </tr>
-          ))}
+          ) : (
+            currentProjects.map((project, index) => (
+              <tr key={index}>
+                <td>{indexOfFirst + index + 1}</td>
+                <td>{project.name}</td>
+                <td>{project.output}</td>
+                <td>{project.status}</td>
+                <td>{project.department}</td>
+                <td>{project.section}</td>
+                <td>{project.year}</td>
+                <td>
+                  <button
+                    onClick={() => openProgressModal(project)}
+                    className={styles.progressButton}
+                  >
+                    {project.progress}%
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
 
-      {/* Pagination */}
       <div className={styles.pagination}>
-        <button
-          className={styles.pageButton}
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
+        <button onClick={handlePrevious} disabled={currentPage === 1} className={styles.pageBtn}>
           Previous
         </button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <button
-          className={styles.pageButton}
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >
+        {[...Array(totalPages)].map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i + 1)}
+            className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.activePage : ''}`}
+          >
+            {i + 1}
+          </button>
+        ))}
+        <button onClick={handleNext} disabled={currentPage === totalPages} className={styles.pageBtn}>
           Next
         </button>
       </div>
+
+      {selectedProject && (
+        <div className={styles.modal} onClick={closeModal}>
+          <div className={styles.modalContent} id="printable" onClick={(e) => e.stopPropagation()}>
+            <h3 className={styles.modalTitle}>{selectedProject.name} Progress</h3>
+            <div className={styles.progressContainer}>
+              <div
+                className={`${styles.bar} ${getProgressColor(selectedProject.progress)}`}
+                style={{ width: selectedProject.progress + '%' }}
+              >
+                {selectedProject.progress}%
+              </div>
+            </div>
+
+            <div className={styles.modalButtons}>
+              <button onClick={printModal} className={styles.printButton}>
+                Print
+              </button>
+              <button onClick={closeModal} className={styles.closeButton}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default ProjectStatus;

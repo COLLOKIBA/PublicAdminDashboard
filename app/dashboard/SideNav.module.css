@@ -6,7 +6,7 @@
 
 /* Sidebar Styles */
 .sidebar {
-  width: 250px; /* Default sidebar width */
+  width: 200px; /* Default sidebar width */
   background-color: #1a202c; /* Dark gray background */
   color: white;
   padding: 1rem;
@@ -14,6 +14,7 @@
   flex-direction: column;
   position: fixed; /* Sidebar stays in place */
   height: 100vh;
+  margin-right: 0;
   left: 0;
   top: 0;
   overflow-y: auto; /* Enable scrolling if needed */
@@ -23,7 +24,7 @@
 /* Adjust sidebar width for smaller screens */
 @media (max-width: 1024px) {
   .sidebar {
-    width: 200px; /* Smaller width for tablets */
+    width: 180px; /* Smaller width for tablets */
   }
 }
 
@@ -33,9 +34,10 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 450px) {
   .sidebar {
     width: 150px; /* Even smaller width for very small screens */
+    margin-right: 0%;
   }
 }
 
@@ -73,29 +75,10 @@
 
 /* Main Content */
 .content {
-  flex-grow: 1; /* Fills remaining space */
+  flex-grow: 0; /* Fills remaining space */
   padding: 20px;
-  margin-left: 250px; /* Default offset for sidebar width */
+  margin-left: 200px; /* Default offset for sidebar width */
   background-color: #f8f9fa; /* Light gray */
   overflow-y: auto; /* Scroll content if needed */
   transition: margin-left 0.3s ease; /* Smooth transition for content margin */
-}
-
-/* Adjust content margin based on sidebar width for smaller screens */
-@media (max-width: 1024px) {
-  .content {
-    margin-left: 200px; /* Adjust offset for smaller sidebar width */
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    margin-left: 180px; /* Adjust offset for smaller sidebar width */
-  }
-}
-
-@media (max-width: 480px) {
-  .content {
-    margin-left: 150px; /* Adjust offset for smallest sidebar width */
-  }
 }
