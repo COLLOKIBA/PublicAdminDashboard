@@ -1,0 +1,352 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/dashboard/ProjectStatus/ProjectStatus.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/* ProjectStatus.module.css */
+
+.ProjectStatus_wrapper__yjMgP {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.ProjectStatus_title__eh_cn {
+  text-align: center;
+  color: #28a745; /* bright green */
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.ProjectStatus_filters__gRwTE {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.ProjectStatus_filterInput__yAwCv {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  min-width: 180px;
+  transition: border-color 0.3s ease;
+}
+
+.ProjectStatus_filterInput__yAwCv:focus {
+  border-color: #1e7e34;
+  outline: none;
+  box-shadow: 0 0 8px #28a745aa;
+}
+
+.ProjectStatus_table__zIg4w {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  font-size: 1rem;
+  background: white;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ProjectStatus_table__zIg4w thead tr {
+  background-color: #28a745;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ProjectStatus_table__zIg4w th,
+.ProjectStatus_table__zIg4w td {
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.ProjectStatus_table__zIg4w tbody tr {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.05);
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.ProjectStatus_table__zIg4w tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgb(0 0 0 / 0.15);
+}
+
+.ProjectStatus_progressButton__Jwsb9 {
+  cursor: pointer;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  color: white;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+}
+
+.ProjectStatus_pagination__YA7RL {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ProjectStatus_pageBtn__O6dfJ {
+  padding: 8px 16px;
+  border: 2px solid #28a745;
+  background: white;
+  color: #28a745;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ProjectStatus_pageBtn__O6dfJ:hover:not(:disabled) {
+  background-color: #28a745;
+  color: white;
+}
+
+.ProjectStatus_pageBtn__O6dfJ:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ProjectStatus_activePage__X_YIC {
+  background-color: #28a745;
+  color: white;
+  cursor: default;
+}
+
+.ProjectStatus_modal____LZb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.ProjectStatus_modalContent__jyzIS {
+  background: white;
+  padding: 28px 32px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  position: relative;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ProjectStatus_modalTitle__iebsF {
+  color: #28a745;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.ProjectStatus_progressContainer__FLDwQ {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  height: 30px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.ProjectStatus_bar__C8n1d {
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: width 0.5s ease;
+}
+
+.ProjectStatus_red__qv7tW {
+  background-color: #dc3545; /* bootstrap red */
+}
+
+.ProjectStatus_gold__Pd86k {
+  background-color: #ffc107; /* bootstrap warning */
+  color: #333;
+}
+
+.ProjectStatus_orange__Nd7OH {
+  background-color: #fd7e14; /* bootstrap orange */
+}
+
+.ProjectStatus_green__5o6TQ {
+  background-color: #28a745; /* bootstrap green */
+}
+
+.ProjectStatus_modalButtons__Fo2jq {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ProjectStatus_printButton__mM3tG,
+.ProjectStatus_closeButton__ChkPW {
+  flex: 1 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ProjectStatus_printButton__mM3tG {
+  background-color: #28a745;
+  color: white;
+}
+
+.ProjectStatus_printButton__mM3tG:hover {
+  background-color: #1e7e34;
+}
+
+.ProjectStatus_closeButton__ChkPW {
+  background-color: #dc3545;
+  color: white;
+}
+
+.ProjectStatus_closeButton__ChkPW:hover {
+  background-color: #b02a37;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .ProjectStatus_filters__gRwTE {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ProjectStatus_filterInput__yAwCv {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .ProjectStatus_modalContent__jyzIS {
+    width: 90%;
+  }
+
+  .ProjectStatus_table__zIg4w thead {
+    display: none;
+  }
+
+  .ProjectStatus_table__zIg4w tbody tr {
+    display: block;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+  }
+
+  .ProjectStatus_table__zIg4w tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+
+  .ProjectStatus_table__zIg4w tbody tr td:last-child {
+    border-bottom: none;
+  }
+  .ProjectStatus_ratingSection__BAzdi {
+  margin-top: 20px;
+}
+
+.ProjectStatus_ratingInput__mjk_H {
+  margin: 0 10px;
+  width: 60px;
+  padding: 5px;
+}
+
+.ProjectStatus_submitRatingButton__OaI9U {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+}
+/* Rating stars */
+.ProjectStatus_stars__L_Vyb {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0 16px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.ProjectStatus_star__OvKFQ {
+  color: #ccc;
+  transition: color 0.2s ease;
+}
+
+.ProjectStatus_star__OvKFQ:hover,
+.ProjectStatus_star__OvKFQ:hover ~ .ProjectStatus_star__OvKFQ {
+  color: #ffc107;
+}
+
+.ProjectStatus_filled__In5UH {
+  color: #ffc107;
+}
+
+.ProjectStatus_ratingLabel__gxHjg {
+  font-weight: bold;
+  margin-top: 16px;
+  display: block;
+}
+
+/* Feedback textarea */
+.ProjectStatus_feedbackTextarea__fJvs0 {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+/* Feedback button */
+.ProjectStatus_submitFeedbackButton__HxFE9 {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ProjectStatus_submitFeedbackButton__HxFE9:hover {
+  background-color: #218838;
+}
+

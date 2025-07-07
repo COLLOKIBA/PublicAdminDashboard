@@ -1,0 +1,88 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/dashboard/SideNav.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* Container for Sidebar + Main Content */
+.SideNav_container__RvEz6 {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar Styles */
+.SideNav_sidebar__YVSOn {
+  width: 200px; /* Default sidebar width */
+  background-color: #1a202c; /* Dark gray background */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Sidebar stays in place */
+  height: 100vh;
+  margin-right: 0;
+  left: 0;
+  top: 0;
+  overflow-y: auto; /* Enable scrolling if needed */
+  transition: width 0.3s ease; /* Smooth transition for width change */
+}
+
+/* Adjust sidebar width for smaller screens */
+@media (max-width: 1024px) {
+  .SideNav_sidebar__YVSOn {
+    width: 180px; /* Smaller width for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .SideNav_sidebar__YVSOn {
+    width: 180px; /* Further reduced width for mobile devices */
+  }
+}
+
+@media (max-width: 450px) {
+  .SideNav_sidebar__YVSOn {
+    width: 150px; /* Even smaller width for very small screens */
+    margin-right: 0%;
+  }
+}
+
+/* Sidebar Links */
+.SideNav_navList__lYhhp {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.SideNav_navItem__HSw_8 {
+  margin-bottom: 10px;
+}
+
+.SideNav_navLink__A6Pp_ {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.SideNav_navLink__A6Pp_:hover {
+  background-color: #2d3748; /* Darker gray on hover */
+}
+
+/* Active Link */
+.SideNav_activeLink__KqI9w {
+  background-color: #28a745; /* Green background for active page */
+  font-weight: bold;
+  color: white;
+}
+
+/* Main Content */
+.SideNav_content__CW_nv {
+  flex-grow: 0; /* Fills remaining space */
+  padding: 20px;
+  margin-left: 200px; /* Default offset for sidebar width */
+  background-color: #f8f9fa; /* Light gray */
+  overflow-y: auto; /* Scroll content if needed */
+  transition: margin-left 0.3s ease; /* Smooth transition for content margin */
+}
+
